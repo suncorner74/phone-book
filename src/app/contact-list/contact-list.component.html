@@ -1,0 +1,68 @@
+<p-toolbar styleClass="p-mb-4">
+  <ng-template pTemplate="right">
+    <button
+      pButton
+      pRipple
+      label="New"
+      icon="pi pi-plus"
+      class="p-button-success p-mr-2"
+      (click)="createDialog()"
+    ></button>
+  </ng-template>
+</p-toolbar>
+<br />
+<br />
+
+<div class="card">
+  <p-table
+    [value]="contactList"
+    responsiveLayout="scroll"
+    [rows]="10"
+    [paginator]="true"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+    [globalFilterFields]="['firstName', 'lastName', 'phone']"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="firstName">
+          First Name <p-sortIcon field="firstName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="lastName">
+          Last Name <p-sortIcon field="lastName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="phone">
+          Mobile <p-sortIcon field="phone"></p-sortIcon>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-contact>
+      <tr>
+        <td>{{ contact.firstName }}</td>
+        <td>{{ contact.lastName }}</td>
+        <td>{{ contact.phone }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-success p-mr-2"
+            (click)="editContact(contact)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-warning"
+            (click)="deleteContact(contact)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <app-create-contact [createContect]="createContect" [selectedContact] ="contact"  (saveContact) = "saveContact($event)" (hideDialog) = "hideDialog($event)" ></app-create-contact>
+</div>
