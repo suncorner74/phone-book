@@ -1,3 +1,6 @@
+
+<p-toast></p-toast>
+
 <p-toolbar styleClass="p-mb-4">
   <ng-template pTemplate="right">
     <button
@@ -23,7 +26,6 @@
     dataKey="id"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [showCurrentPageReport]="true"
-    [globalFilterFields]="['firstName', 'lastName', 'phone']"
   >
     <ng-template pTemplate="header">
       <tr>

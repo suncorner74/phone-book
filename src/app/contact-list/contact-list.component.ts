@@ -31,7 +31,6 @@ export class ContactListComponent implements OnInit, OnDestroy {
   createDialog() {
     this.contact ={};
     this.createContect = true;
-    // this.changeDetectorRef.detectChanges();
   }
 
   /**
@@ -60,6 +59,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
     }
     this.createContect = false;
     this.editContactData = false;
+    this.changeDetectorRef.detectChanges();
   }
 
   /**
